@@ -412,7 +412,7 @@
   }
 
   /* Section */
-  section { padding: 160px 72px; }
+  section { padding: 220px 80px; }
 
   .section-header {
     display: flex;
@@ -490,11 +490,14 @@
     animation: carouselScroll 25s linear infinite;
     will-change: transform;
   }
-  #carouselTrack {
+  #carouselTrack, #ecommerceTrack {
     animation: none;
     cursor: grab;
     user-select: none;
     touch-action: pan-y;
+  }
+  #posters .carousel-wrapper + .carousel-wrapper {
+    margin-top: 60px;
   }
   .carousel-track:hover {
     animation-play-state: paused;
@@ -1125,12 +1128,288 @@
     100% { transform: translate(-5%, 10%) rotate(-5deg); }
   }
 
+  /* Email & Landing Pages Section */
+  #email-landing {
+    position: relative;
+    background: var(--bg-2);
+    overflow: hidden;
+  }
+  
+  .perspective-container {
+    position: relative;
+    width: 100%;
+    height: 780px;
+    margin-top: 60px;
+    perspective: 1800px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: radial-gradient(circle at 50% 50%, rgba(13, 21, 48, 0.4), transparent 80%);
+  }
+
+  .perspective-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    width: 90%;
+    max-width: 1200px;
+    transform: rotateX(12deg);
+    transform-style: preserve-3d;
+  }
+
+  .perspective-column {
+    display: flex;
+    flex-direction: column;
+    height: 780px;
+    overflow: hidden;
+    will-change: transform;
+    transform-style: preserve-3d;
+  }
+
+  .col-left {
+    transform: rotate(-5deg);
+  }
+  .col-center {
+    transform: rotate(0deg);
+  }
+  .col-right {
+    transform: rotate(5deg);
+  }
+
+  .perspective-column-inner {
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+  }
+
+  .column-block {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 40px;
+  }
+
+  /* Infinite Scroll Up Animations for each column */
+  .col-left-inner {
+    animation: scrollUpColLeft 16s linear infinite;
+  }
+  .col-center-inner {
+    animation: scrollUpColCenter 20s linear infinite;
+  }
+  .col-right-inner {
+    animation: scrollUpColRight 12s linear infinite;
+  }
+
+  .perspective-column-inner:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes scrollUpColLeft {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+  @keyframes scrollUpColCenter {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+  @keyframes scrollUpColRight {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+
+  .mockup-card {
+    position: relative;
+    background: rgba(8, 15, 34, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(232, 213, 176, 0.08);
+    border-radius: 16px;
+    padding: 32px;
+    aspect-ratio: 3/4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    transform-style: preserve-3d;
+  }
+
+  .mockup-card:hover {
+    transform: translateZ(40px);
+    border-color: rgba(232, 213, 176, 0.3);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 
+                0 0 30px rgba(232, 213, 176, 0.15);
+  }
+
+  .mockup-img {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-top: 16px;
+  }
+
+  .mockup-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    border-radius: 10px;
+  }
+
+  .mockup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateZ(20px);
+  }
+
+  .mockup-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .mockup-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(240, 244, 255, 0.15);
+  }
+
+  .mockup-dot.active {
+    background: var(--accent);
+  }
+
+  .mockup-badge {
+    background: rgba(232, 213, 176, 0.06);
+    border: 1px solid rgba(232, 213, 176, 0.15);
+    color: var(--accent);
+    font-family: var(--font-display);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  .mockup-body {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transform: translateZ(25px);
+  }
+
+  .mockup-category {
+    font-family: var(--font-display);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .mockup-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
+  }
+
+  .mockup-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .mockup-status-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(5, 10, 24, 0.45);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 16px;
+    pointer-events: none;
+    transform: translateZ(10px);
+  }
+
+  .mockup-status-tag {
+    background: rgba(237, 76, 92, 0.12);
+    border: 1px solid rgba(237, 76, 92, 0.35);
+    color: #ff5263;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 100px;
+    box-shadow: 0 0 15px rgba(237, 76, 92, 0.1);
+    animation: pulseStatusGlow 2.5s infinite ease-in-out;
+  }
+
+  @keyframes pulseStatusGlow {
+    0%, 100% {
+      opacity: 0.75;
+      box-shadow: 0 0 10px rgba(237, 76, 92, 0.1);
+    }
+    50% {
+      opacity: 1;
+      box-shadow: 0 0 20px rgba(237, 76, 92, 0.3);
+    }
+  }
 
   @media (max-width: 900px) {
     nav { top: 16px; padding: 12px 16px 12px 22px; gap: 24px; max-width: calc(100vw - 32px); min-width: auto; }
     .nav-links { gap: 2px; }
     .nav-links a { padding: 6px 10px; font-size: 10px; }
-    section { padding: 96px 28px; }
+    section { padding: 120px 28px; }
+    .perspective-container {
+      height: auto;
+      overflow: visible;
+      background: none;
+      perspective: none;
+      margin-top: 40px;
+    }
+    .perspective-grid {
+      grid-template-columns: 1fr;
+      transform: none !important;
+      width: 100%;
+      gap: 30px;
+    }
+    .perspective-column {
+      transform: none !important;
+      gap: 30px;
+    }
+    .perspective-column-inner {
+      animation: none !important;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .column-block:nth-child(2) {
+      display: none;
+    }
+    .column-block {
+      padding-bottom: 0;
+      gap: 30px;
+    }
+    .col-left, .col-center, .col-right {
+      transform: none !important;
+    }
+    .mockup-card {
+      aspect-ratio: auto;
+      min-height: 320px;
+    }
     .hero { padding: 0 28px; }
     .video-grid { grid-template-columns: 1fr; }
     #threeDGrid { grid-template-columns: 1fr; grid-auto-rows: auto; }
@@ -1189,7 +1468,7 @@
 <section class="hero">
   <div class="hero-bg-text" aria-hidden="true">SALUDO</div>
   <div id="hero-3d-canvas"></div>
-  <p class="hero-label reveal">Graphic Designer - Ai prompt Engineer - web designer - 3D</p>
+  <p class="hero-label reveal">Creative Designer - Graphic Designer - Web Designer - 3D</p>
   <h1 class="hero-title reveal">
     <span class="title-small">Thyron Andrei</span>
     <span class="title-big">Saludo</span>
@@ -1210,17 +1489,376 @@
   <div class="section-header reveal">
     <span class="section-num">01</span>
     <h2 class="section-title">Graphic Creative Ads</h2>
-    <span class="section-tag">Posters · 22 works</span>
+    <span class="section-tag">Posters · 27 works</span>
   </div>
   <div class="carousel-wrapper">
     <div class="carousel-track" id="carouselTrack"></div>
+  </div>
+  <div class="carousel-wrapper">
+    <div class="carousel-track" id="ecommerceTrack"></div>
+  </div>
+</section>
+
+<!-- Email & Landing Pages -->
+<section id="email-landing">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Email &amp; Landing Pages</h2>
+    <span class="section-tag">Email &amp; Web Designs · 12 works</span>
+  </div>
+  <div class="perspective-container reveal">
+    <div class="perspective-grid">
+      <div class="perspective-column col-left">
+        <div class="perspective-column-inner col-left-inner">
+          <div class="column-block">
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Email</span>
+              </div>
+              <div class="mockup-img">
+                <img src="Email.png" alt="Email" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Email 1</span>
+              </div>
+              <div class="mockup-img">
+                <img src="Email 1.png" alt="Email 1" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Iron Will Gym</span>
+              </div>
+              <div class="mockup-img">
+                <img src="iron 1.png" alt="Iron 1" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Iron Will Gym</span>
+              </div>
+              <div class="mockup-img">
+                <img src="iron 2.png" alt="Iron 2" />
+              </div>
+            </div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="column-block">
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Email</span>
+              </div>
+              <div class="mockup-img">
+                <img src="Email.png" alt="Email" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Email 1</span>
+              </div>
+              <div class="mockup-img">
+                <img src="Email 1.png" alt="Email 1" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Iron Will Gym</span>
+              </div>
+              <div class="mockup-img">
+                <img src="iron 1.png" alt="Iron 1" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Iron Will Gym</span>
+              </div>
+              <div class="mockup-img">
+                <img src="iron 2.png" alt="Iron 2" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Column 2: Center -->
+      <div class="perspective-column col-center">
+        <div class="perspective-column-inner col-center-inner">
+          <div class="column-block">
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Email 2</span>
+              </div>
+              <div class="mockup-img">
+                <img src="Email 2.png" alt="Email 2" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Email 3</span>
+              </div>
+              <div class="mockup-img">
+                <img src="Email 3.png" alt="Email 3" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Iron Will Gym</span>
+              </div>
+              <div class="mockup-img">
+                <img src="iron 3.png" alt="Iron 3" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Kixor</span>
+              </div>
+              <div class="mockup-img">
+                <img src="kixor 1.png" alt="Kixor 1" />
+              </div>
+            </div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="column-block">
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Email 2</span>
+              </div>
+              <div class="mockup-img">
+                <img src="Email 2.png" alt="Email 2" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Email 3</span>
+              </div>
+              <div class="mockup-img">
+                <img src="Email 3.png" alt="Email 3" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Iron Will Gym</span>
+              </div>
+              <div class="mockup-img">
+                <img src="iron 3.png" alt="Iron 3" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Kixor</span>
+              </div>
+              <div class="mockup-img">
+                <img src="kixor 1.png" alt="Kixor 1" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 3: Right -->
+      <div class="perspective-column col-right">
+        <div class="perspective-column-inner col-right-inner">
+          <div class="column-block">
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Email 4</span>
+              </div>
+              <div class="mockup-img">
+                <img src="Email 4.png" alt="Email 4" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Email 5</span>
+              </div>
+              <div class="mockup-img">
+                <img src="Email 5.png" alt="Email 5" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Kixor</span>
+              </div>
+              <div class="mockup-img">
+                <img src="kixor 2.png" alt="Kixor 2" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Kixor</span>
+              </div>
+              <div class="mockup-img">
+                <img src="kixor 3.png" alt="Kixor 3" />
+              </div>
+            </div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="column-block">
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Email 4</span>
+              </div>
+              <div class="mockup-img">
+                <img src="Email 4.png" alt="Email 4" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Email 5</span>
+              </div>
+              <div class="mockup-img">
+                <img src="Email 5.png" alt="Email 5" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Kixor</span>
+              </div>
+              <div class="mockup-img">
+                <img src="kixor 2.png" alt="Kixor 2" />
+              </div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-dots">
+                  <span class="mockup-dot active"></span>
+                  <span class="mockup-dot"></span>
+                  <span class="mockup-dot"></span>
+                </div>
+                <span class="mockup-badge">Kixor</span>
+              </div>
+              <div class="mockup-img">
+                <img src="kixor 3.png" alt="Kixor 3" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- AI Animation Vids -->
 <section id="ai-vids">
   <div class="section-header reveal">
-    <span class="section-num">02</span>
+    <span class="section-num">03</span>
     <h2 class="section-title">AI Animation</h2>
     <span class="section-tag">Video · 7 works</span>
   </div>
@@ -1230,7 +1868,7 @@
 <!-- Tech Stack -->
 <section id="tools">
   <div class="section-header reveal">
-    <span class="section-num">03</span>
+    <span class="section-num">04</span>
     <h2 class="section-title">Tech Stack</h2>
     <span class="section-tag">Tools & Software</span>
   </div>
@@ -1242,7 +1880,7 @@
 <!-- UI/UX -->
 <section id="uiux">
   <div class="section-header reveal">
-    <span class="section-num">04</span>
+    <span class="section-num">05</span>
     <h2 class="section-title">UI / UX Design</h2>
     <span class="section-tag">Case Studies · 6 works</span>
   </div>
@@ -1332,7 +1970,7 @@
 <!-- 3D Vids -->
 <section id="3d" style="background: var(--bg-2);">
   <div class="section-header reveal">
-    <span class="section-num">05</span>
+    <span class="section-num">06</span>
     <h2 class="section-title">3D/Other</h2>
     <span class="section-tag" id="othersCountTag">No AI · 5 works</span>
   </div>
@@ -1342,7 +1980,7 @@
 <!-- Education -->
 <section id="education">
   <div class="section-header reveal">
-    <span class="section-num">06</span>
+    <span class="section-num">07</span>
     <h2 class="section-title">Education</h2>
     <span class="section-tag">Academic Background</span>
   </div>
@@ -1528,6 +2166,22 @@
       }
     }
 
+    // Parallax for Email & Landing Pages section columns
+    const emailSection = document.getElementById('email-landing');
+    if (emailSection) {
+      const rect = emailSection.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const scrollProgress = -rect.top;
+        const colLeft = emailSection.querySelector('.col-left');
+        const colCenter = emailSection.querySelector('.col-center');
+        const colRight = emailSection.querySelector('.col-right');
+        
+        if (colLeft) colLeft.style.transform = `translateY(${scrollProgress * 0.08}px) rotate(-5deg)`;
+        if (colCenter) colCenter.style.transform = `translateY(${scrollProgress * -0.04}px) rotate(0deg)`;
+        if (colRight) colRight.style.transform = `translateY(${scrollProgress * 0.12}px) rotate(5deg)`;
+      }
+    }
+
     // Back to Top Visibility & Opacity Logic
     if (currentScroll > 600) {
       backToTop.classList.add('visible');
@@ -1581,6 +2235,15 @@
     { path: 'Graphics/Packaging 1.png', label: 'Packaging 1' },
     { path: 'Graphics/Packaging 2.png', label: 'Packaging 2' },
     { path: 'Graphics/Packaging 3.png', label: 'Packaging 3' }
+  ];
+
+  // E-commerce poster data
+  const ecommerceIds = [
+    { path: 'e-commerce 1.png', label: 'E-commerce 1' },
+    { path: 'e-commerce 2.png', label: 'E-commerce 2' },
+    { path: 'e-commerce 3.png', label: 'E-commerce 3' },
+    { path: 'e-commerce 4.png', label: 'E-commerce 4' },
+    { path: 'e-commerce 5.png', label: 'E-commerce 5' }
   ];
 
   // AI Videos
@@ -1723,6 +2386,111 @@
     requestAnimationFrame(animate);
   })();
 
+  // E-Commerce Carousel (Infinite Loop + Drag Support + Reverse Auto-Scroll)
+  (function initEcommerceCarousel() {
+    const track = document.getElementById('ecommerceTrack');
+    if (!track) return;
+    let currentX = 0;
+    let isDragging = false;
+    let startMouseX = 0;
+    let lastMouseX = 0;
+    let velocity = 0;
+    let isHovered = false;
+    let dragMoved = false;
+    const autoScrollSpeed = 0.8;
+    const friction = 0.96;
+
+    function buildCarouselItems() {
+      return ecommerceIds.map(p => {
+        const el = document.createElement('div');
+        el.className = 'carousel-item';
+        el.innerHTML = `
+          <img src="${p.path}" alt="${p.label}" loading="lazy" draggable="false">
+          <div class="poster-overlay">
+            <span class="poster-overlay-text">${p.label}</span>
+          </div>
+        `;
+        // Click only works if we didn't drag
+        el.addEventListener('click', () => {
+          if (!dragMoved) openModal('img', p.path);
+        });
+        return el;
+      });
+    }
+
+    // Duplicate items for infinite scrolling
+    [...buildCarouselItems(), ...buildCarouselItems()].forEach(el => track.appendChild(el));
+
+    function animate() {
+      if (!isDragging) {
+        if (isHovered) {
+          velocity *= 0.92; // Quickly decelerate to stop on hover
+        } else if (Math.abs(velocity) > autoScrollSpeed) {
+          velocity *= friction; // Gradual momentum decay
+        } else {
+          velocity = autoScrollSpeed; // Resume normal auto-scroll (scrolling in opposite direction)
+        }
+        currentX += velocity;
+      }
+
+      const totalWidth = track.scrollWidth;
+      if (totalWidth > 0) {
+        const halfWidth = totalWidth / 2;
+        // Seamless loop back/forth
+        if (currentX <= -halfWidth) currentX += halfWidth;
+        if (currentX > 0) currentX -= halfWidth;
+        
+        track.style.transform = `translateX(${currentX}px)`;
+      }
+      requestAnimationFrame(animate);
+    }
+
+    // State handling
+    track.addEventListener('mouseenter', () => isHovered = true);
+    track.addEventListener('mouseleave', () => { isHovered = false; });
+
+    const startDrag = (x) => {
+      isDragging = true;
+      dragMoved = false;
+      startMouseX = x;
+      lastMouseX = x;
+      velocity = 0;
+      track.style.cursor = 'grabbing';
+    };
+
+    const moveDrag = (x) => {
+      if (!isDragging) return;
+      const diff = x - startMouseX;
+      if (Math.abs(diff) > 5) dragMoved = true;
+      velocity = x - lastMouseX;
+      currentX += velocity;
+      lastMouseX = x;
+    };
+
+    const stopDrag = () => {
+      isDragging = false;
+      track.style.cursor = 'grab';
+    };
+
+    // Mouse listeners
+    track.addEventListener('mousedown', (e) => startDrag(e.clientX));
+    window.addEventListener('mousemove', (e) => moveDrag(e.clientX));
+    window.addEventListener('mouseup', stopDrag);
+
+    // Touch listeners
+    track.addEventListener('touchstart', (e) => {
+      isHovered = true;
+      startDrag(e.touches[0].clientX);
+    }, { passive: true });
+    track.addEventListener('touchmove', (e) => moveDrag(e.touches[0].clientX), { passive: true });
+    track.addEventListener('touchend', () => {
+      isHovered = false;
+      stopDrag();
+    });
+
+    requestAnimationFrame(animate);
+  })();
+
   // Build AI video grid
   const avg = document.getElementById('aiVideoGrid');
   aiVids.forEach((v, index) => {
@@ -1732,8 +2500,6 @@
     const isLocal = !!v.src;
     const videoSrc = v.src || v.id;
 
-    // Add new badge for the first three videos
-    const newBadgeHtml = (index < 3) ? '<span class="new-badge">New</span>' : '';
 
     const thumbHtml = isLocal
       ? `<video class="video-thumb" src="${v.src}" muted playsinline loop preload="metadata"${index < 3 ? ' autoplay' : ''}></video>`
@@ -1746,7 +2512,6 @@
 
     el.innerHTML = `
       ${thumbHtml}
-      ${newBadgeHtml}
       <div class="video-overlay">
         ${playBtnHtml}
       </div>
