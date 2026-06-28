@@ -10,7 +10,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome",
-            "file": "C:/Users/andrei/Desktop/test codes/1.html"
+            "file": "C:/Users/andrei/Desktop/test codes/index.html"
         }
     ]
 }
